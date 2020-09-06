@@ -49,7 +49,7 @@ export default {
           utilisateurData
         )
         .then(data => {
-          router.push({ name: "home" });
+          router.push({ name: "Utilisateur" });
         });
     },
     getUtilisateur() {

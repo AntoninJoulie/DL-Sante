@@ -49,7 +49,7 @@ export default {
           vehiculeData
         )
         .then(data => {
-          router.push({ name: "home" });
+          router.push({ name: "Vehicule" });
         });
     },
     getVehicule() {

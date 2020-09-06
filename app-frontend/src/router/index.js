@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HomeComponent from '@/views/Home';
+import UtilisateurComponent from '@/views/Utilisateur';
 import VehiculeComponent from '@/views/Vehicule';
 import EditUtilisateurComponent from '@/components/utilisateur/Edit';
 import CreateUtilisateurComponent from '@/components/utilisateur/Create';
@@ -12,17 +12,17 @@ export default new Router({
   routes: [{
       path: '/',
       redirect: {
-        name: 'home'
+        name: 'Utilisateur'
       }
     },
     {
-      path: '/home',
-      name: 'home',
-      component: HomeComponent
+      path: '/utilisateur',
+      name: 'Utilisateur',
+      component: UtilisateurComponent
     },
     {
       path: '/vehicule',
-      name: 'vehicule',
+      name: 'Vehicule',
       component: VehiculeComponent
     },
     {

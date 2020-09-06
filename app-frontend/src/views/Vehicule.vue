@@ -24,7 +24,7 @@
                   <td>
                     <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group" style="margin-bottom: 20px;">
-                                  <router-link :to="{name: 'Edit', params: {id: vehicule._id}}" class="btn btn-sm btn-outline-secondary">Edit Vehicule </router-link>
+                                  <router-link :to="{name: 'EditVehicule', params: {id: vehicule._id}}" class="btn btn-sm btn-outline-secondary">Edit Vehicule </router-link>
                                   <button class="btn btn-sm btn-outline-secondary" v-on:click="deleteVehicule(vehicule._id)">Delete Vehicule</button>
                                 </div>
                               </div>
@@ -35,6 +35,7 @@
           </div>
     </div>
 </template>
+
 <script>
 import { server } from "../helper";
 import axios from "axios";
@@ -52,7 +53,7 @@ export default {
     fetchVehicules() {
       axios
         .get(`${server.baseURL}/vehicule/vehicules`)
-        .then(data => (this.utilisateurs = data.data));
+        .then(data => (this.vehicules = data.data));
     },
     deleteVehicule(id) {
       axios

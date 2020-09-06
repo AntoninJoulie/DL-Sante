@@ -8,13 +8,7 @@ import { VehiculeModule } from './vehicule/vehicule.module';
 @Module({
   imports: [
     MongooseModule.forRoot(
-      'mongodb+srv://root:root@dlsante.omala.mongodb.net/utilisateur?retryWrites=true&w=majority',
-      {
-        useNewUrlParser: true,
-      },
-    ),
-    MongooseModule.forRoot(
-      'mongodb+srv://root:root@dlsante.omala.mongodb.net/vehicule?retryWrites=true&w=majority',
+      'mongodb+srv://root:root@dlsante.omala.mongodb.net/dlsante?retryWrites=true&w=majority',
       {
         useNewUrlParser: true,
       },

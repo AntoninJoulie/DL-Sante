@@ -4,7 +4,7 @@
           <h2> Create Vehicule </h2>
           <form id="create-post-form" @submit.prevent="createVehicule">
                <div class="form-group col-md-12">
-                <label for="title"> brand name </label>
+                <label for="title"> Brand name </label>
                 <input type="text" id="brand_name" v-model="brand_name" name="title" class="form-control" placeholder="Enter brand name">
                </div>
                <div class="form-group col-md-12">
@@ -39,7 +39,7 @@ export default {
     },
     __submitToServer(data) {
       axios.post(`${server.baseURL}/vehicule/create`, data).then(data => {
-        router.push({ name: "vehicule" });
+        router.push({ name: "Vehicule" });
       });
     }
   }

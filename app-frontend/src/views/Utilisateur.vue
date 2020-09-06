@@ -24,7 +24,7 @@
                   <td>
                     <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group" style="margin-bottom: 20px;">
-                                  <router-link :to="{name: 'Edit', params: {id: utilisateur._id}}" class="btn btn-sm btn-outline-secondary">Edit Utilisateur </router-link>
+                                  <router-link :to="{name: 'EditUtilisateur', params: {id: utilisateur._id}}" class="btn btn-sm btn-outline-secondary">Edit Utilisateur </router-link>
                                   <button class="btn btn-sm btn-outline-secondary" v-on:click="deleteUtilisateur(utilisateur._id)">Delete Utilisateur</button>
                                 </div>
                               </div>
@@ -35,6 +35,7 @@
           </div>
     </div>
 </template>
+
 <script>
 import { server } from "../helper";
 import axios from "axios";
