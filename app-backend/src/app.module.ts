@@ -4,8 +4,6 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UtilisateurModule } from './utilisateur/utilisateur.module';
 import { VehiculeModule } from './vehicule/vehicule.module';
-import { VehiculeService } from './vehicule/vehicule.service';
-import { VehiculeController } from './vehicule/vehicule.controller';
 
 @Module({
   imports: [
@@ -24,7 +22,7 @@ import { VehiculeController } from './vehicule/vehicule.controller';
     UtilisateurModule,
     VehiculeModule,
   ],
-  controllers: [AppController, VehiculeController],
-  providers: [AppService, VehiculeService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

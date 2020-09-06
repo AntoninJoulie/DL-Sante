@@ -1,10 +1,10 @@
 <template>
     <div class="container-fluid">
       <div class="text-center">
-        <h1>Table utilisateurs</h1>
+        <h1>Table véhicules</h1>
        <p> Produit avec Nest.js, Vue.js and MongoDB</p>
-       <div v-if="utilisateurs.length === 0">
-            <h2> Aucun utilisateur </h2>
+       <div v-if="vehicules.length === 0">
+            <h2> Aucun vehicule </h2>
         </div>
       </div>
 
@@ -12,20 +12,20 @@
             <table class="table table-bordered">
               <thead class="thead-dark">
                 <tr>
-                  <th scope="col">Firstname</th>
-                  <th scope="col">Lastname</th>
+                  <th scope="col">brand name</th>
+                  <th scope="col">number model</th>
                   <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="utilisateur in utilisateurs" :key="utilisateur._id">
-                  <td>{{ utilisateur.first_name }}</td>
-                  <td>{{ utilisateur.last_name }}</td>
+                <tr v-for="vehicule in vehicules" :key="vehicule._id">
+                  <td>{{ vehicule.brand_name }}</td>
+                  <td>{{ vehicule.number_model }}</td>
                   <td>
                     <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group" style="margin-bottom: 20px;">
-                                  <router-link :to="{name: 'Edit', params: {id: utilisateur._id}}" class="btn btn-sm btn-outline-secondary">Edit Utilisateur </router-link>
-                                  <button class="btn btn-sm btn-outline-secondary" v-on:click="deleteUtilisateur(utilisateur._id)">Delete Utilisateur</button>
+                                  <router-link :to="{name: 'Edit', params: {id: vehicule._id}}" class="btn btn-sm btn-outline-secondary">Edit Vehicule </router-link>
+                                  <button class="btn btn-sm btn-outline-secondary" v-on:click="deleteVehicule(vehicule._id)">Delete Vehicule</button>
                                 </div>
                               </div>
                   </td>
@@ -41,26 +41,26 @@ import axios from "axios";
 export default {
   data() {
     return {
-      utilisateurs: []
+      vehicules: []
     };
   },
   created() {
-    this.fetchUtilisateurs();
+    this.fetchVehicules();
   },
   methods: {
-    fetchUtilisateurs() {
+    },
+    fetchVehicules() {
       axios
-        .get(`${server.baseURL}/utilisateur/utilisateurs`)
+        .get(`${server.baseURL}/vehicule/vehicules`)
         .then(data => (this.utilisateurs = data.data));
     },
-    deleteUtilisateur(id) {
+    deleteVehicule(id) {
       axios
-        .delete(`${server.baseURL}/utilisateur/delete?utilisateurID=${id}`)
+        .delete(`${server.baseURL}/vehicule/delete?vehiculeID=${id}`)
         .then(data => {
           console.log(data);
           window.location.reload();
         });
     }
-  }
-};
+  };
 </script>
