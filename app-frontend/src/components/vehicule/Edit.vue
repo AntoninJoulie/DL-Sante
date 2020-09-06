@@ -6,20 +6,20 @@
          </small>
         </h4>
         <div class="col-md-12 form-wrapper">
-          <h2> Edit Vehicule </h2>
+          <h2> Modification véhicule </h2>
           <form id="create-post-form" @submit.prevent="editVehicule">
                <div class="form-group col-md-12">
-                <label for="title"> brand name </label>
+                <label for="title"> Nom de la marque </label>
                 <input type="text" id="brand_name" v-model="vehicule.brand_name" name="title" class="form-control" placeholder="Enter brand name">
                </div>
                <div class="form-group col-md-12">
-                <label for="title"> number model </label>
+                <label for="title"> Numéro de modèle </label>
                 <input type="text" id="number_model" v-model="vehicule.number_model" name="title" class="form-control" placeholder="Enter number model">
                </div>
                <div class="form-group col-md-12">
-                <label for="title"> User id </label>
-                <select v-model="user_id"  id="user_id" name="title" class="form-control">
-                  <option v-for="utilisateur in utilisateurs" :key="utilisateur._id" v-bind:value="utilisateur._id">{{ utilisateur.first_name + " " + utilisateur.last_name }}</option>
+                <label for="title"> Utilisateur </label>
+                <select v-model="vehicule.user_id"  id="user_id" name="title" class="form-control">
+                  <option v-for="utilisateur in utilisateurs" :key="utilisateur._id" v-bind:value="[utilisateur._id, utilisateur.first_name, utilisateur.last_name]">{{ utilisateur.first_name + " " + utilisateur.last_name }}</option>
                 </select>
                </div>
               <div class="form-group col-md-4 pull-right">
@@ -41,9 +41,9 @@ export default {
     };
   },
   created() {
+    this.fetchUtilisateurs();
     this.id = this.$route.params.id;
     this.getVehicule();
-    this.fetchUtilisateurs();
   },
   methods: {
     fetchUtilisateurs() {
@@ -55,7 +55,9 @@ export default {
       let vehiculeData = {
         brand_name: this.vehicule.brand_name,
         number_model: this.vehicule.number_model,
-        user_id: this.user_id,
+        user_id: this.vehicule.user_id[0],
+        user_first_name: this.vehicule.user_id[1],
+        user_last_name: this.vehicule.user_id[2],
       };
       axios
         .put(

@@ -1,14 +1,14 @@
 <template>
    <div>
         <div class="col-md-12 form-wrapper">
-          <h2> Create Utilisateur </h2>
+          <h2> Création utilisateur </h2>
           <form id="create-post-form" @submit.prevent="createUtilisateur">
                <div class="form-group col-md-12">
-                <label for="title"> First Name </label>
+                <label for="title"> Prénom </label>
                 <input type="text" id="first_name" v-model="first_name" name="title" class="form-control" placeholder="Enter firstname">
                </div>
                <div class="form-group col-md-12">
-                <label for="title"> Last Name </label>
+                <label for="title"> Nom </label>
                 <input type="text" id="last_name" v-model="last_name" name="title" class="form-control" placeholder="Enter Last name">
                </div>
               <div class="form-group col-md-4 pull-right">

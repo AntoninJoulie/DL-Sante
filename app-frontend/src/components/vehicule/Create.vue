@@ -1,20 +1,21 @@
 <template>
    <div>
         <div class="col-md-12 form-wrapper">
-          <h2> Create Vehicule </h2>
+          <h2> Création véhicule </h2>
           <form id="create-post-form" @submit.prevent="createVehicule">
                <div class="form-group col-md-12">
-                <label for="title"> Brand name </label>
-                <input type="text" id="brand_name" v-model="brand_name" name="title" class="form-control" placeholder="Enter brand name">
+                <label for="title"> Nom de la marque </label>
+                <input type="text" id="brand_name" v-model="brand_name" name="title" class="form-control" placeholder="Entrer le nom de la marque">
                </div>
                <div class="form-group col-md-12">
-                <label for="title"> Number model </label>
-                <input type="text" id="number_model" v-model="number_model" name="title" class="form-control" placeholder="Enter number model">
+                <label for="title"> Numéro de modèle </label>
+                <input type="text" id="number_model" v-model="number_model" name="title" class="form-control" placeholder="Entrer le numéro de modèle">
                </div>
                <div class="form-group col-md-12">
-                <label for="title"> User id </label>
+                <label for="title"> Utilisateur </label>
                 <select v-model="user_id"  id="user_id" name="title" class="form-control">
-                  <option v-for="utilisateur in utilisateurs" :key="utilisateur._id" v-bind:value="utilisateur._id">{{ utilisateur.first_name + " " + utilisateur.last_name }}</option>
+                  <option value="" selected>Séléctionner un utilisateur</option>
+                  <option v-for="utilisateur in utilisateurs" :key="utilisateur._id" v-bind:value="[utilisateur._id, utilisateur.first_name, utilisateur.last_name]">{{ utilisateur.first_name + " " + utilisateur.last_name }}</option>
                 </select>
                </div>
               <div class="form-group col-md-4 pull-right">
@@ -35,7 +36,8 @@ export default {
       brand_name: "",
       number_model: "",
       user_id: "",
-
+      user_first_name: "",
+      user_last_name: "",
     };
   },
   created(){
@@ -51,7 +53,9 @@ export default {
       let vehiculeData = {
         brand_name: this.brand_name,
         number_model: this.number_model,
-        user_id: this.user_id,
+        user_id: this.user_id[0],
+        user_first_name: this.user_id[1],
+        user_last_name: this.user_id[2],
       };
       this.__submitToServer(vehiculeData);
     },

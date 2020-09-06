@@ -6,14 +6,14 @@
          </small>
         </h4>
         <div class="col-md-12 form-wrapper">
-          <h2> Edit Utilisateur </h2>
+          <h2> Modification utilisateur </h2>
           <form id="create-post-form" @submit.prevent="editUtilisateur">
                <div class="form-group col-md-12">
-                <label for="title"> First Name </label>
+                <label for="title"> Prénom </label>
                 <input type="text" id="first_name" v-model="utilisateur.first_name" name="title" class="form-control" placeholder="Enter firstname">
                </div>
                <div class="form-group col-md-12">
-                <label for="title"> Last Name </label>
+                <label for="title"> Nom </label>
                 <input type="text" id="last_name" v-model="utilisateur.last_name" name="title" class="form-control" placeholder="Enter Last name">
                </div>
               <div class="form-group col-md-4 pull-right">

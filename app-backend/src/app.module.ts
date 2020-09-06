@@ -11,6 +11,7 @@ import { VehiculeModule } from './vehicule/vehicule.module';
       'mongodb+srv://root:root@dlsante.omala.mongodb.net/dlsante?retryWrites=true&w=majority',
       {
         useNewUrlParser: true,
+        useFindAndModify: false,
       },
     ),
     UtilisateurModule,
