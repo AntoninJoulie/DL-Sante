@@ -16,6 +16,12 @@
                 <label for="title"> number model </label>
                 <input type="text" id="number_model" v-model="vehicule.number_model" name="title" class="form-control" placeholder="Enter number model">
                </div>
+               <div class="form-group col-md-12">
+                <label for="title"> User id </label>
+                <select v-model="user_id"  id="user_id" name="title" class="form-control">
+                  <option v-for="utilisateur in utilisateurs" :key="utilisateur._id" v-bind:value="utilisateur._id">{{ utilisateur.first_name + " " + utilisateur.last_name }}</option>
+                </select>
+               </div>
               <div class="form-group col-md-4 pull-right">
                   <button class="btn btn-success" type="submit"> Edit vehicule </button>
               </div>           </form>
@@ -29,6 +35,7 @@ import router from "../../router";
 export default {
   data() {
     return {
+      utilisateurs: [],
       id: 0,
       vehicule: {}
     };
@@ -36,12 +43,19 @@ export default {
   created() {
     this.id = this.$route.params.id;
     this.getVehicule();
+    this.fetchUtilisateurs();
   },
   methods: {
+    fetchUtilisateurs() {
+      axios
+        .get(`${server.baseURL}/utilisateur/utilisateurs`)
+        .then(data => (this.utilisateurs = data.data));
+    },
     editVehicule() {
       let vehiculeData = {
         brand_name: this.vehicule.brand_name,
         number_model: this.vehicule.number_model,
+        user_id: this.user_id,
       };
       axios
         .put(
